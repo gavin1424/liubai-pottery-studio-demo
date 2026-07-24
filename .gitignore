@@ -1,0 +1,13 @@
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本機 QA 與管理檔案，不發布到公開儲存庫
+/qa-*.png
+/design-qa-comparison.png
+/design-qa-sections-comparison.png
+/留白陶所_公開版_*.png
+/DEPLOYMENT_INFO.md

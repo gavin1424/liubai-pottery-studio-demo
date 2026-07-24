@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://gavin1424.github.io/liubai-pottery-studio-demo/sitemap.xml
