@@ -1380,14 +1380,14 @@ dialog > p:not(.eyebrow) {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
   .course-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
   :root {
     --header-height: 72px;
   }
@@ -1510,7 +1510,7 @@ dialog > p:not(.eyebrow) {
   }
 }
 
-@media screen and (max-width: 768px), screen and (max-device-width: 768px) {
+@media screen and (max-width: 768px) {
   .header-inner,
   .section-inner {
     width: min(calc(100% - 36px), var(--content));
@@ -1687,7 +1687,7 @@ dialog > p:not(.eyebrow) {
   }
 }
 
-@media screen and (max-width: 520px), screen and (max-device-width: 520px) {
+@media screen and (max-width: 520px) {
   body {
     padding-bottom: 64px;
     overflow-wrap: anywhere;
@@ -2089,15 +2089,57 @@ dialog > p:not(.eyebrow) {
   display: none !important;
 }
 
-@media screen and (max-width: 1100px) and (min-width: 769px) {
+@media screen and (min-width: 769px) and (max-width: 1180px) {
+  .hero {
+    height: clamp(640px, 68vw, 720px);
+    min-height: 0;
+    max-height: 720px;
+  }
+
+  .hero-media > img {
+    object-position: 70% center;
+  }
+
+  .hero-inner {
+    width: min(calc(100% - 56px), 1120px);
+    min-height: 100%;
+  }
+
   .hero h1 {
-    font-size: clamp(2.45rem, 4.4vw, 2.9rem);
+    max-width: 580px;
+    font-size: clamp(2.25rem, 4vw, 2.9rem);
     letter-spacing: 0.04em;
+    line-height: 1.4;
   }
 
   .hero-content {
-    width: min(64%, 680px);
-    padding-left: clamp(38px, 5vw, 62px);
+    width: min(66%, 620px);
+    padding: 36px 0 42px clamp(24px, 4vw, 48px);
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .hero-description {
+    max-width: 30em;
+    margin-top: 20px;
+    font-size: 0.94rem;
+    line-height: 1.85;
+  }
+
+  .hero-actions {
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .hero-primary {
+    min-height: 48px;
+  }
+
+  .hero-caption {
+    right: 28px;
+    bottom: 16px;
   }
 
   .hero-shade {
@@ -2110,9 +2152,88 @@ dialog > p:not(.eyebrow) {
         rgba(244, 240, 230, 0) 82%
       );
   }
+
+  .section {
+    padding: 92px 0;
+  }
+
+  .section-inner {
+    width: min(calc(100% - 56px), var(--content));
+  }
+
+  .experience-facts-inner {
+    width: min(calc(100% - 56px), 1120px);
+  }
+
+  .experience-fact {
+    gap: 14px;
+    padding: 20px clamp(18px, 2.4vw, 28px);
+  }
+
+  .experience-fact span {
+    white-space: nowrap;
+  }
 }
 
-@media screen and (max-width: 768px), screen and (max-device-width: 768px) {
+@media screen and (min-width: 769px) and (max-width: 1050px) {
+  .works-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .work-item,
+  .work-item.work-wide,
+  .work-item.work-tall {
+    grid-column: span 1;
+  }
+
+  .work-item img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .process-list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .process-list li {
+    grid-column: span 2;
+  }
+
+  .process-list li:nth-child(4),
+  .process-list li:nth-child(5) {
+    grid-column: span 3;
+    border-top: 0;
+  }
+
+  .process-list li:nth-child(4) {
+    border-left: 0;
+  }
+
+  .footer-inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 38px 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 960px) {
+  .stories-grid,
+  .booking-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .booking-intro {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 768px) {
   body {
     padding-bottom: 0;
   }
@@ -2217,7 +2338,7 @@ dialog > p:not(.eyebrow) {
   }
 }
 
-@media screen and (max-width: 520px), screen and (max-device-width: 520px) {
+@media screen and (max-width: 520px) {
   .hero {
     min-height: max(700px, 90svh);
   }
