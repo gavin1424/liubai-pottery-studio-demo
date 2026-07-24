@@ -1,144 +1,116 @@
-# Design QA｜留白陶所
+# Design QA｜留白陶所 Hero 疊圖改版
 
 ## 比對基準
 
-- source visual truth：使用者於本次任務提供的 `1-Photo-1.jpg` 參考附件（附件本身不提交至公開儲存庫）
-- implementation screenshot：`qa-desktop-1440.png`
-- full-view combined evidence：`design-qa-comparison.png`
-- focused section evidence：`design-qa-sections-comparison.png`
-- supporting screenshots：`qa-courses-1440.png`、`qa-works-1440.png`、`qa-tablet-1024.png`、`qa-tablet-768.png`、`qa-mobile-390.png`、`qa-mobile-360.png`
-- source pixels：1024 × 1280
-- implementation pixels：1440 × 900
-- CSS viewport：1440 × 900
-- deviceScaleFactor：1
-- normalization：完整參考圖與實作畫面皆等比例縮放至 720px 高後並排；區塊比對把課程與作品兩張 1440 × 900 實作畫面垂直合併，再與參考圖等高並排
-- state：首頁初始狀態；課程與作品區為各自錨點的靜止狀態
+- 桌面 source visual truth：使用者本次提供的 `2-Photo-2.jpg`。
+- 手機問題基準：使用者本次提供的 `1-Photo-1.jpg`。
+- 桌面 implementation screenshot：`留白陶所_Hero疊圖改版_1440px.png`。
+- 手機 implementation screenshot：`留白陶所_Hero疊圖改版_390px.png`。
+- 桌面合併證據：`design-qa-comparison.png`。
+- 手機合併證據：`design-qa-sections-comparison.png`。
+- 桌面 source pixels：1024 × 1280；網站 Hero 可見區裁切為 924 × 358。
+- 手機 source pixels：576 × 1280。
+- 桌面 implementation pixels：1404 × 891；CSS viewport 1440 × 900。
+- 手機 implementation pixels：375 × 812；CSS viewport 390 × 844。
+- deviceScaleFactor：1。
+- normalization：桌面將來源與實作 Hero 各縮放至 700px 寬並置於相同 700 × 520 畫布後並排；手機將問題畫面與實作畫面各等比例縮放至 1000px 高後並排。
+- state：首頁初始、選單收合、未捲動。
 
 ## Full-view comparison evidence
 
-`design-qa-comparison.png` 可同時看到參考圖與實作 Hero：
+`design-qa-comparison.png` 顯示：
 
-- 兩者都使用暖米白背景、墨褐色明體、灰橄欖 CTA 與極淡分隔線。
-- 兩者都以左側品牌文案、右側自然光器物攝影建立首屏焦點。
-- 實作保留更多垂直空間與較大的可讀字級，符合真實 1440 × 900 viewport，而不是把完整長頁縮進單張圖片。
-- Hero 圖為全新生成素材，沒有複製參考圖的品牌、Logo、文案或原始照片。
+- 導覽列下方直接接完整 Hero 大圖，沒有獨立白底文字欄。
+- 主標題、說明與 CTA 疊在圖片左側；陶瓶、枝葉與陶碗維持在右側。
+- 米白半透明遮罩只加強左側可讀性，右側材質與自然光仍清晰。
+- 實作 Hero 依需求提高至約 82svh，因此比來源圖中的短 Hero 更高；構圖、字體方向與視覺重心一致。
 
-## Focused region comparison evidence
+## Focused mobile comparison evidence
 
-`design-qa-sections-comparison.png` 同時包含參考圖與實作課程／作品區：
+`design-qa-sections-comparison.png` 顯示：
 
-- 課程卡維持整齊四欄、低陰影、細邊框、圖片優先的資訊密度。
-- 作品區延續低飽和陶器攝影，但使用深墨底建立獨立藝廊段落，避免整頁過度同質。
-- 時間、價格、程度與操作均有足夠字級，不把參考圖的小字直接縮小複製。
+- 修正前是文字區、資訊列、圖片依序分開；修正後全部首屏內容疊在同一張陶藝主視覺中。
+- 390px 主標題維持三行，按鈕依內容寬度顯示，次要連結置於按鈕下方。
+- 花瓶保留在右側，CTA 與連結靠左，沒有蓋住花瓶主體。
+- 三項課程資訊移到 Hero 下方，因此不占用手機首屏。
 
 ## Required fidelity surfaces
 
 ### Fonts and typography
 
-- 中文標題使用 Noto Serif TC／宋體／明體可靠後備字體，內文使用 Noto Sans TC／系統黑體。
-- H1 已調整為桌面兩行，避免早期版本最後兩字單獨換行。
-- 內文、課程資訊與表單字級未為追求極細風格而降低可讀性。
+- 已在所有 HTML head 正式載入 Google Fonts `Noto Serif TC` 300／400／500／600。
+- 全站中文使用 Noto Serif TC，並保留 Source Han Serif TC、Songti TC、PMingLiU 後備。
+- Logo 為 500 字重；導覽為 400；Hero H1 為 400，桌面兩行、手機三行。
+- 瀏覽器 `document.fonts.check()` 回傳已載入，計算字體為 Noto Serif TC 字族。
 
 ### Spacing and layout rhythm
 
-- 首屏為約 45／55 的文案與圖片比例，對齊參考圖的視覺重心。
-- 區塊使用 70–112px 垂直節奏、1px 細分隔線與少量方角，沒有每段都做厚重卡片。
-- 768px 以下改為真正單欄流程；390px 與 360px 沒有水平溢位。
+- 桌面 Hero 高度 738px；1024px 為 720px；360／390／412px 為 720／760／824px。
+- 桌面文案左緣約 8%，最大寬度 680px；標題不置中。
+- 360／390／412px 使用 20px 安全距離，Hero CTA 寬 167px，不是滿版。
+- 體驗資訊改為 Hero 後的細線三欄；手機改為單欄。
 
 ### Colors and visual tokens
 
-- 背景、陶土、墨褐與灰橄欖色直接對應使用者指定的方向。
-- 金屬感與高彩度被壓低，未出現 SaaS 藍紫、霓虹、玻璃擬態或大量漸層。
-- 次要文字已由 #746D63 加深為 #70685E，使米白背景對比達約 4.77:1。
+- 主要色票使用米白 `#f1eee5`、暖白 `#f7f4ec`、墨色 `#35342f`、灰綠 `#74785d`、深灰綠 `#62664d`。
+- 金屬感、鮮豔漸層、玻璃擬態與厚重陰影均未加入。
+- Hero 遮罩使用低彩度米白透明層，沒有對整張照片加灰色蒙版。
 
 ### Image quality and asset fidelity
 
-- 11 張影像均逐張生成與裁切，不使用佔位圖、CSS 圖形或網路熱連結。
-- Hero、工作室、四堂課與五張作品主圖維持相同自然光、低飽和、木材／亞麻／陶土材質。
-- 所有圖片轉為 WebP 並設定實際寬高、alt 與非首屏 lazy loading。
-- 圖示採本地 Bootstrap Icons，不使用 emoji 或自製 div 圖示。
+- Hero 使用既有本地原創 `assets/images/hero-ceramics.webp`，1600 × 1066、約 89KB。
+- 桌面使用 `object-position: center right`；手機使用 63% 水平焦點。
+- 圖片維持 WebP、本地相對路徑、`fetchpriority="high"` 與有效 alt。
+- 沒有使用參考圖本身作為正式素材，也沒有新增來源不明圖片。
 
 ### Copy and content
 
-- 文案完整使用繁體中文，沒有 Lorem Ipsum、開發備註或英文模板文。
-- 學員回饋、地址、電話與社群皆清楚標為情境展示。
-- 表單成功訊息明確說明資料未送出、不儲存。
+- Hero 文案完全依本次指定內容。
+- 導覽更新為關於我們、課程介紹、作品選物、體驗預約、日誌、聯繫我們。
+- 示範品牌聲明、情境評價標示、表單不傳送提示均保留。
 
 ## Interaction and browser evidence
 
-- 課程詳情視窗、課程帶入表單、作品展開、FAQ、漢堡選單、示範聯絡提示、表單錯誤與成功狀態皆已在瀏覽器實測。
-- 1440、1024、768、390、360 五種 viewport 均實測。
-- 瀏覽器控制台錯誤與警告：0。
-- 本地正式頁面與主要資產：HTTP 200。
-- `prefers-reduced-motion` 規則會關閉非必要動畫並立即顯示 reveal 內容。
+- 360、390、412、768、1024、1440 六種 viewport 均實測，無水平溢位。
+- 900px 以下使用漢堡選單；1024／1440 顯示桌面導覽。
+- 手機漢堡可開啟、關閉，點擊課程介紹後會收合並跳到正確錨點。
+- Hero CTA 可跳至預約表單。
+- FAQ 可展開與收合。
+- 表單空白送出會顯示 7 個錯誤；有效測試資料送出後顯示「資料未送出、未儲存」示範提示。
+- 完整捲動後 39 張圖片破圖數為 0。
+- 控制台錯誤：0。
+- reduced-motion 規則仍會停止非必要動畫並直接顯示 reveal 內容。
 
 ## Comparison history
 
 ### Iteration 1
 
-- [P2] 桌面 Hero H1 因字級與欄寬比例，第二行最後兩字單獨換行。
-- 修正：把桌面 Hero 欄位改為約 45／55，H1 降至 43.2px 並減少字距。
-- 修正後證據：`qa-desktop-1440.png` 顯示 H1 成為兩行，Hero 圖仍維持主要視覺。
+- [P1] 桌面 H1 因字級過大，第二句被切成兩行，整體成為三行。
+- 修正：Hero 文案寬度提高至 750px，左側位置調為約 8%，H1 改為最大 52px。
+- 修正後：1440 與 1024 皆為兩行。
 
 ### Iteration 2
 
-- [P2] 次要文字在米白背景的計算對比約為 4.45:1，略低於一般文字 AA 目標。
-- 修正：`--muted` 由 `#746D63` 加深為 `#70685E`。
-- 修正後證據：計算對比約 4.77:1；實作截圖中的課程與說明文字仍保留柔和層級。
+- [P1] 360／390px 的 Hero CTA 被舊有 `.hero-actions .button { width: 100% }` 撐滿。
+- 修正：使用較高 specificity 將 `.hero-actions .hero-primary` 設為 `width: fit-content`，實測寬度 167px。
 
 ### Iteration 3
 
-- [P3] 隱藏的第六張作品因 lazy loading 尚未下載，初始整頁圖片檢查會列為未完成。
-- 修正：實際點擊「查看所有作品」，確認圖片載入完成、`naturalWidth = 900`，且按鈕可再收合。
-- 此項不影響初始可見內容。
+- [P2] 手機 CTA 與次要連結並排時，次要連結與花瓶主體有交疊。
+- 修正：手機 action group 改為直向排列，兩者均靠左。
+
+### Iteration 4
+
+- [P2] 768px 的垂直遮罩讓右側陶瓶過度泛白。
+- 修正：521–768px 改用左深右淡的水平遮罩；520px 以下保留垂直遮罩以維持狹窄手機的文字可讀性。
 
 ## Findings
 
 - 沒有剩餘 P0、P1 或 P2 問題。
-- 參考圖是把完整長頁縮在一張直式截圖中；實作依真實 viewport 保留較大字級與較長頁面，屬於可讀性與互動需求下的合理調整。
+- 來源 Hero 較短；實作依使用者明確要求使用 720–880px／約 82svh，因此高度差異屬於指定調整。
 
 ## Follow-up polish
 
-- [P3] 未來取得正式品牌 Logo 後，可替換目前的文字字標。
-- [P3] 真實公開前可再生成 1200 × 630 的專用 Open Graph 圖。
-
-## 2026-07-24 手機響應式修正
-
-### 本次視覺基準與合併證據
-
-- 問題基準：使用者提供的實機畫面 `1-Photo-1.jpg`，可見漢堡導覽已啟用，但 Hero 仍維持左右雙欄。
-- 桌面基準：使用者提供的 `2-Photo-2.jpg`，用於確認侘寂色調、左右 Hero 與桌面資訊密度不應被重做。
-- 修正證據：`留白陶所_修正後_390px.png`。
-- 合併比對：`design-qa-comparison.png` 將實機問題畫面與修正後 390px 首屏並排；兩側皆等比例縮放至 1280px 高。
-
-### Comparison history
-
-#### Mobile iteration 1
-
-- [P1] 導覽列於 1024px 切成漢堡選單，但 Hero 直到 768px 才切成單欄；介於兩者的手機桌面模式會出現「漢堡＋雙欄 Hero」。
-- 修正：保留桌面雙欄，將 768px 以下及實體裝置寬度 768px 以下明確切成單欄；Hero 文案、特色、圖片依閱讀順序排列。
-
-#### Mobile iteration 2
-
-- [P1] 主標題在狹窄欄位將「器物」拆開，花瓶圖沿用桌面固定高度而形成狹長直欄。
-- 修正：H1 改為兩個語意行並保護「器物」不拆字；手機圖使用 4:3、`object-fit: cover` 與 62% 水平焦點。
-
-#### Mobile iteration 3
-
-- [P2] 1024px 初次檢查時 H1 為三行，偏離原桌面兩行構圖。
-- 修正：769–1100px 使用 34.4px 標題與較緊字距；1024px 回復兩行，Hero、四欄課程與五步流程維持桌面結構。
-
-#### Mobile iteration 4
-
-- [P2] 手機固定 CTA 若永久顯示，會遮住首屏特色或頁尾。
-- 修正：CTA 僅在 Hero 離開視窗後顯示，接近 Footer 時隱藏；使用 scroll、resize、pageshow、hashchange 與 IntersectionObserver 同步狀態。
-
-### Final visual verification
-
-- 360、390、412px：單欄 Hero、標題三行且「器物」完整、課程單欄、作品兩欄、流程單欄、Footer 兩欄。
-- 768px：單欄 Hero、課程與流程兩欄、Footer 三欄。
-- 1024、1440px：Hero 左右雙欄、課程四欄、流程五步橫向，桌面氣質與原有比例保留。
-- 六種 viewport 的 `scrollWidth` 均等於 `clientWidth`，沒有水平溢位。
-- 無剩餘 P0、P1 或 P2 視覺問題。
+- [P3] 未來若有正式書法字標，可替換目前 Noto Serif TC 文字 Logo；現況已符合可商用示範與清晰辨識需求。
 
 final result: passed

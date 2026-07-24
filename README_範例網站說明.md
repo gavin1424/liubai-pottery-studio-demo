@@ -20,6 +20,7 @@ GitHub 儲存庫：<https://github.com/gavin1424/liubai-pottery-studio-demo>
 - 語意化 HTML5
 - 原生 CSS（色彩變數、Grid、Flexbox、響應式與 reduced-motion）
 - 原生 JavaScript（無框架、無資料庫）
+- Google Fonts Noto Serif TC（全站繁體中文明體系統）
 - 本地 WebP 影像與 Bootstrap Icons 圖示
 - 前端示範表單驗證
 
@@ -89,7 +90,7 @@ python -m http.server 8771 --bind 127.0.0.1
 1. 將新圖片轉成 WebP，放入 `assets/images/`。
 2. 使用相同檔名直接替換，或修改 HTML 中對應的 `src`。
 3. 同步更新 `width`、`height` 與 `alt`。
-4. Hero 圖保留一般載入；其他非首屏圖片保留 `loading="lazy"`。
+4. Hero 圖保留一般載入與 `fetchpriority="high"`；桌面與手機裁切位置由 `styles.css` 的 `.hero-media > img` 控制。
 5. 建議 Hero 小於 250 KB，其他單張圖片小於 180 KB。
 
 目前 11 張正式圖片均為本案例透過內建圖片生成工具新生成，再轉為 WebP 的原創情境素材；沒有直接使用參考圖或外部熱連結。

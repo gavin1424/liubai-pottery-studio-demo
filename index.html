@@ -22,7 +22,10 @@
   <meta name="twitter:description" content="以侘寂、留白與自然材質風格打造的陶藝工作室網站設計示範。">
   <meta name="twitter:image" content="https://gavin1424.github.io/liubai-pottery-studio-demo/assets/images/og-liubai.webp">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260724-mobile-2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260724-hero-overlay-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,10 +73,9 @@
         <a href="#about">關於我們</a>
         <a href="#courses">課程介紹</a>
         <a href="#works">作品選物</a>
-        <a href="#process">製作流程</a>
-        <a href="#stories">學員分享</a>
-        <a href="#faq">常見問題</a>
-        <a href="#booking">聯絡我們</a>
+        <a href="#booking">體驗預約</a>
+        <a href="#stories">日誌</a>
+        <a href="#booking">聯繫我們</a>
         <a class="button button-small" href="#booking">預約體驗</a>
       </nav>
     </div>
@@ -81,29 +83,46 @@
 
   <main id="main-content">
     <section id="top" class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">陶藝 × 日常 × 緩慢生活</p>
+      <picture class="hero-media">
+        <img src="assets/images/hero-ceramics.webp" width="1600" height="1066" alt="自然光下的手作陶瓶、枝葉與深色陶碗" fetchpriority="high">
+      </picture>
+      <div class="hero-shade" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-content reveal">
+          <p class="hero-eyebrow">陶藝 × 日常 × 緩慢生活</p>
           <h1 id="hero-title">
             <span class="hero-title-line">在安靜的時光裡，</span>
             <span class="hero-title-line">做一件屬於自己的<span class="no-break">器物。</span></span>
           </h1>
-          <p class="hero-lead">從一塊陶土開始，感受雙手、時間與生活留下的痕跡。</p>
-          <p class="hero-note">不需要任何經驗，讓我們陪你慢下來，完成第一件親手製作的陶器。</p>
+          <p class="hero-description">
+            從一塊陶土開始，感受雙手、時間與生活留下的痕跡。<br>
+            不需要任何經驗，讓我們陪你慢下來，完成第一件親手製作的陶器。
+          </p>
           <div class="hero-actions">
-            <a class="button" href="#booking">預約陶藝體驗 <img src="assets/icons/arrow-right.svg" width="16" height="16" alt=""></a>
+            <a class="button hero-primary" href="#booking">預約陶藝體驗 <img src="assets/icons/arrow-right.svg" width="16" height="16" alt=""></a>
             <a class="text-link" href="#courses">查看所有課程 <span aria-hidden="true">／</span></a>
           </div>
-          <dl class="hero-facts" aria-label="課程特色">
-            <div><dt>小班人數</dt><dd>每班 4–6 人</dd></div>
-            <div><dt>初次體驗</dt><dd>無基礎可參加</dd></div>
-            <div><dt>完成作品</dt><dd>燒製後預約取件</dd></div>
-          </dl>
         </div>
-        <figure class="hero-media reveal reveal-delay-1">
-          <img src="assets/images/hero-ceramics.webp" width="1600" height="1066" alt="自然光下的手作陶瓶、枝葉與深色陶碗">
-          <figcaption>泥土會記得每一次按壓，也留下獨一無二的手感。</figcaption>
-        </figure>
+      </div>
+
+      <p class="hero-caption">泥土會記得每一次按壓，也留下獨一無二的手感。</p>
+    </section>
+
+    <section class="experience-facts" aria-label="體驗課程資訊">
+      <div class="experience-facts-inner">
+        <div class="experience-fact">
+          <span>小班人數</span>
+          <strong>每班 4–6 人</strong>
+        </div>
+        <div class="experience-fact">
+          <span>初次體驗</span>
+          <strong>無基礎可參加</strong>
+        </div>
+        <div class="experience-fact">
+          <span>完成作品</span>
+          <strong>燒製後預約取件</strong>
+        </div>
       </div>
     </section>
 
@@ -480,6 +499,6 @@
     <button class="button dialog-confirm" type="button">我知道了</button>
   </dialog>
 
-  <script src="script.js?v=20260724-mobile-2" defer></script>
+  <script src="script.js?v=20260724-hero-overlay-3" defer></script>
 </body>
 </html>
