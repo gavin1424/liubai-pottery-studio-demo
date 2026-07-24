@@ -102,4 +102,43 @@
 - [P3] 未來取得正式品牌 Logo 後，可替換目前的文字字標。
 - [P3] 真實公開前可再生成 1200 × 630 的專用 Open Graph 圖。
 
+## 2026-07-24 手機響應式修正
+
+### 本次視覺基準與合併證據
+
+- 問題基準：使用者提供的實機畫面 `1-Photo-1.jpg`，可見漢堡導覽已啟用，但 Hero 仍維持左右雙欄。
+- 桌面基準：使用者提供的 `2-Photo-2.jpg`，用於確認侘寂色調、左右 Hero 與桌面資訊密度不應被重做。
+- 修正證據：`留白陶所_修正後_390px.png`。
+- 合併比對：`design-qa-comparison.png` 將實機問題畫面與修正後 390px 首屏並排；兩側皆等比例縮放至 1280px 高。
+
+### Comparison history
+
+#### Mobile iteration 1
+
+- [P1] 導覽列於 1024px 切成漢堡選單，但 Hero 直到 768px 才切成單欄；介於兩者的手機桌面模式會出現「漢堡＋雙欄 Hero」。
+- 修正：保留桌面雙欄，將 768px 以下及實體裝置寬度 768px 以下明確切成單欄；Hero 文案、特色、圖片依閱讀順序排列。
+
+#### Mobile iteration 2
+
+- [P1] 主標題在狹窄欄位將「器物」拆開，花瓶圖沿用桌面固定高度而形成狹長直欄。
+- 修正：H1 改為兩個語意行並保護「器物」不拆字；手機圖使用 4:3、`object-fit: cover` 與 62% 水平焦點。
+
+#### Mobile iteration 3
+
+- [P2] 1024px 初次檢查時 H1 為三行，偏離原桌面兩行構圖。
+- 修正：769–1100px 使用 34.4px 標題與較緊字距；1024px 回復兩行，Hero、四欄課程與五步流程維持桌面結構。
+
+#### Mobile iteration 4
+
+- [P2] 手機固定 CTA 若永久顯示，會遮住首屏特色或頁尾。
+- 修正：CTA 僅在 Hero 離開視窗後顯示，接近 Footer 時隱藏；使用 scroll、resize、pageshow、hashchange 與 IntersectionObserver 同步狀態。
+
+### Final visual verification
+
+- 360、390、412px：單欄 Hero、標題三行且「器物」完整、課程單欄、作品兩欄、流程單欄、Footer 兩欄。
+- 768px：單欄 Hero、課程與流程兩欄、Footer 三欄。
+- 1024、1440px：Hero 左右雙欄、課程四欄、流程五步橫向，桌面氣質與原有比例保留。
+- 六種 viewport 的 `scrollWidth` 均等於 `clientWidth`，沒有水平溢位。
+- 無剩餘 P0、P1 或 P2 視覺問題。
+
 final result: passed

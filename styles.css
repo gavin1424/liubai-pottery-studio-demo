@@ -106,6 +106,26 @@ h3 {
   letter-spacing: 0.03em;
 }
 
+.hero-title-line {
+  display: block;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+.hero-grid > *,
+.about-grid > *,
+.course-grid > *,
+.works-grid > *,
+.process-list > *,
+.stories-grid > *,
+.booking-grid > *,
+.faq-grid > *,
+.footer-inner > * {
+  min-width: 0;
+}
+
 :focus-visible {
   outline: 3px solid rgba(111, 114, 88, 0.45);
   outline-offset: 4px;
@@ -1344,13 +1364,15 @@ dialog > p:not(.eyebrow) {
     padding-right: 42px;
   }
 
+  .course-body > p {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 900px) {
   .course-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-  }
-
-  .course-body > p {
-    min-height: auto;
   }
 }
 
@@ -1458,18 +1480,6 @@ dialog > p:not(.eyebrow) {
     aspect-ratio: 16 / 8.5;
   }
 
-  .process-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .process-list li + li {
-    border-left: 1px solid var(--line);
-  }
-
-  .process-list li:nth-child(4) {
-    border-left: 0;
-  }
-
   .booking-grid {
     grid-template-columns: 1fr 1.2fr;
     gap: 40px;
@@ -1481,7 +1491,15 @@ dialog > p:not(.eyebrow) {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+  .hero h1 {
+    font-size: 2.15rem;
+    letter-spacing: 0.01em;
+    line-height: 1.32;
+  }
+}
+
+@media screen and (max-width: 768px), screen and (max-device-width: 768px) {
   .header-inner,
   .section-inner {
     width: min(calc(100% - 36px), var(--content));
@@ -1492,26 +1510,52 @@ dialog > p:not(.eyebrow) {
   }
 
   .hero-grid {
-    display: flex;
+    display: grid;
+    width: 100%;
     min-height: auto;
-    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr);
     margin: 0;
   }
 
   .hero-copy {
+    width: 100%;
     max-width: none;
-    padding: 70px 24px 54px;
+    padding: 64px 20px 48px;
+  }
+
+  .hero h1 {
+    max-width: 13em;
+    margin-bottom: 22px;
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.3;
+    letter-spacing: 0.015em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .hero-lead,
+  .hero-note {
+    max-width: 38rem;
+    font-size: 1rem;
   }
 
   .hero-media {
+    width: 100%;
     min-height: 0;
     aspect-ratio: 4 / 3;
+  }
+
+  .hero-media > img {
+    width: 100%;
+    height: 100%;
+    object-position: 61% center;
   }
 
   .hero-media figcaption {
     right: 24px;
     bottom: 18px;
     left: 24px;
+    max-width: none;
   }
 
   .hero-actions {
@@ -1549,7 +1593,20 @@ dialog > p:not(.eyebrow) {
   }
 
   .about-grid {
-    gap: 26px;
+    gap: 20px;
+  }
+
+  .about-section {
+    padding: 72px 0;
+  }
+
+  .about-grid .section-heading,
+  .about-grid .section-heading h2 {
+    margin-bottom: 0;
+  }
+
+  .about-copy {
+    margin-top: 2px;
   }
 
   .about-grid .section-heading h2 br {
@@ -1558,6 +1615,8 @@ dialog > p:not(.eyebrow) {
 
   .about-media {
     grid-column: auto;
+    width: 100%;
+    margin-top: 10px;
   }
 
   .about-media img {
@@ -1576,7 +1635,8 @@ dialog > p:not(.eyebrow) {
   }
 
   .work-item img {
-    height: 440px;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   .work-item figcaption {
@@ -1616,14 +1676,15 @@ dialog > p:not(.eyebrow) {
   }
 }
 
-@media (max-width: 520px) {
+@media screen and (max-width: 520px), screen and (max-device-width: 520px) {
   body {
     padding-bottom: 64px;
+    overflow-wrap: anywhere;
   }
 
   h1 {
-    font-size: clamp(2.35rem, 12vw, 3.3rem);
-    letter-spacing: 0.04em;
+    font-size: clamp(2rem, 9vw, 2.55rem);
+    letter-spacing: 0.015em;
   }
 
   h2 {
@@ -1651,7 +1712,7 @@ dialog > p:not(.eyebrow) {
   }
 
   .hero-copy {
-    padding: 58px 18px 46px;
+    padding: 52px 20px 42px;
   }
 
   .hero-lead {
@@ -1678,7 +1739,17 @@ dialog > p:not(.eyebrow) {
   .hero-facts div {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    gap: 16px;
+    padding: 10px 0;
+  }
+
+  .hero-facts dt {
+    font-size: 0.78rem;
+  }
+
+  .hero-facts dd {
+    font-size: 0.9rem;
+    text-align: right;
   }
 
   .hero-facts div + div {
@@ -1688,11 +1759,11 @@ dialog > p:not(.eyebrow) {
   }
 
   .hero-media {
-    aspect-ratio: 4 / 4.25;
+    aspect-ratio: 4 / 3;
   }
 
   .hero-media > img {
-    object-position: 65% center;
+    object-position: 62% center;
   }
 
   .hero-media figcaption {
@@ -1708,12 +1779,25 @@ dialog > p:not(.eyebrow) {
   }
 
   .works-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .work-item img {
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
+  }
+
+  .work-item figcaption {
+    padding: 10px 9px;
+  }
+
+  .work-item figcaption span {
+    font-size: 0.86rem;
+  }
+
+  .work-item figcaption small {
+    font-size: 0.64rem;
   }
 
   .process-list {
@@ -1755,6 +1839,7 @@ dialog > p:not(.eyebrow) {
   .faq-list summary {
     min-height: 64px;
     font-size: 0.96rem;
+    padding: 14px 2px;
   }
 
   .faq-list details p {
@@ -1774,6 +1859,13 @@ dialog > p:not(.eyebrow) {
     grid-column: 1 / -1;
   }
 
+  .footer-inner > div:not(.footer-brand) a,
+  .footer-inner > div:not(.footer-brand) button {
+    min-height: 44px;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
   .footer-bottom {
     align-items: start;
     flex-direction: column;
@@ -1791,8 +1883,19 @@ dialog > p:not(.eyebrow) {
     bottom: 10px;
     left: 12px;
     display: flex;
+    visibility: hidden;
     min-height: 50px;
+    opacity: 0;
+    pointer-events: none;
     box-shadow: 0 10px 28px rgba(44, 41, 37, 0.26);
+    transform: translateY(14px);
+  }
+
+  .mobile-booking-cta.is-visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .legal-main {

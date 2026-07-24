@@ -10,7 +10,11 @@
   const bookingForm = document.querySelector(".booking-form");
   const courseSelect = document.querySelector("#course");
   const dateInput = document.querySelector("#date");
+  const hero = document.querySelector(".hero");
+  const footer = document.querySelector(".site-footer");
+  const mobileBookingCta = document.querySelector(".mobile-booking-cta");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mobileViewport = window.matchMedia("(max-width: 520px)");
 
   const openDialog = (dialog) => {
     if (!dialog) return;
@@ -62,6 +66,29 @@
 
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+
+  const updateMobileBookingCta = () => {
+    if (!mobileBookingCta || !hero || !footer) return;
+    const heroHasPassed = hero.getBoundingClientRect().bottom < 120;
+    const footerIsNear = footer.getBoundingClientRect().top < window.innerHeight - 20;
+    mobileBookingCta.classList.toggle("is-visible", mobileViewport.matches && heroHasPassed && !footerIsNear);
+  };
+
+  updateMobileBookingCta();
+  window.addEventListener("scroll", updateMobileBookingCta, { passive: true });
+  window.addEventListener("resize", updateMobileBookingCta);
+  window.addEventListener("pageshow", updateMobileBookingCta);
+  window.addEventListener("hashchange", updateMobileBookingCta);
+  mobileViewport.addEventListener?.("change", updateMobileBookingCta);
+
+  if ("IntersectionObserver" in window && mobileBookingCta && hero && footer) {
+    const mobileCtaObserver = new IntersectionObserver(updateMobileBookingCta, {
+      rootMargin: "-120px 0px 20px 0px",
+      threshold: 0
+    });
+    mobileCtaObserver.observe(hero);
+    mobileCtaObserver.observe(footer);
+  }
 
   const revealItems = document.querySelectorAll(".reveal");
   if (reduceMotion.matches || !("IntersectionObserver" in window)) {
